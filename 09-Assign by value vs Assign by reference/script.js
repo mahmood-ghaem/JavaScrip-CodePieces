@@ -36,3 +36,29 @@ console.log('clone new obj with json:', superClone);
 //-----------------------------------------------------------
 
 // note: JavaScript passes all arguments to a function by value.
+
+const number = 100;
+const string = 'Jay';
+let obj1 = {
+  value: 'a',
+};
+let obj2 = {
+  value: 'b',
+};
+let obj3 = obj2;
+
+function change(number, string, obj1, obj2) {
+  // the arguments are new copy of original
+  // when we change value that is no effect to variable in global
+  number = number * 10;
+  string = 'Pete';
+  obj1 = obj2;
+  obj2.value = 'c';
+}
+
+change(number, string, obj1, obj2);
+
+//Guess the outputs here before you run the code:
+console.log(number);
+console.log(string);
+console.log(obj1.value);
