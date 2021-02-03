@@ -27,3 +27,15 @@ const healArcher = wizard.heal.bind(archer, 50, 60);
 console.log(archer);
 healArcher();
 console.log(archer);
+
+//-----------------------------------------------------
+
+const array = [1, 2, 3];
+
+// in this case, the 'this' keyword doesn't matter!
+function getMaxNumber(arr) {
+  return Math.max.apply(null, arr);
+  //return Math.max.call(null, 1, 2, 3);
+}
+
+console.log(getMaxNumber(array));
