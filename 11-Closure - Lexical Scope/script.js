@@ -189,3 +189,36 @@ function userStart() {
 }
 const startWeb = userStart();
 startWeb();
+
+//-------------------------------------------------------------------------
+
+// question 1 change the code to achieve:
+// I am at index 0
+// I am at index 1
+// I am at index 2
+// I am at index 3
+
+const array = [1, 2, 3, 4];
+for (var i = 0; i < array.length; i++) {
+  setTimeout(function () {
+    console.log('I am at index ' + i);
+  }, 3000);
+}
+
+// use let instead var to change to block scope
+const array = [1, 2, 3, 4];
+for (let i = 0; i < array.length; i++) {
+  setTimeout(function () {
+    console.log('I am at index ' + array[i]);
+  }, 3000);
+}
+
+// use immediately run function and use closure
+const array = [1, 2, 3, 4];
+for (var i = 0; i < array.length; i++) {
+  (function (closureI) {
+    setTimeout(function () {
+      console.log('I am at index ' + array[closureI]);
+    }, 3000);
+  })(i);
+}
