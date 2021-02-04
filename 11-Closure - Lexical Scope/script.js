@@ -77,6 +77,7 @@ function callMeMaybe() {
   setTimeout(function () {
     console.log(callMe);
   }, 4000);
+  //const callMe = 'Hi!';           It doesn't matter before or after here is the same as top
 }
 
 callMeMaybe();
