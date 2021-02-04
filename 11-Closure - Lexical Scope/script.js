@@ -77,7 +77,80 @@ function callMeMaybe() {
   setTimeout(function () {
     console.log(callMe);
   }, 4000);
-  //const callMe = 'Hi!';           It doesn't matter before or after here is the same as top
+  //const callMe = 'Hi!';           It doesn't matter before or after, here is the same as top
 }
 
 callMeMaybe();
+
+//----------------------------------------------------------------------
+// Benefit of Closure
+// 1-Memory Efficient
+function heavyDuty(item) {
+  const bigArray = new Array(7000).fill('😄');
+  console.log('created!');
+  return bigArray[item];
+}
+
+heavyDuty(699);
+heavyDuty(699);
+heavyDuty(699);
+// here big array created 3 times
+
+function heavyDuty2() {
+  const bigArray = new Array(7000).fill('😄');
+  console.log('created Again!');
+  return function (item) {
+    return bigArray[item];
+  };
+}
+
+const getHeavyDuty = heavyDuty2();
+getHeavyDuty(699);
+getHeavyDuty(699);
+getHeavyDuty(699);
+// but here just one time big array created
+
+// 2- Encapsulation
+// example1
+const makeNuclearButton_withLaunchAccess = () => {
+  let timeWithoutDestruction = 0;
+
+  const passTime = () => timeWithoutDestruction++;
+  const totalPeaceTime = () => timeWithoutDestruction;
+
+  const launch = () => {
+    timeWithoutDestruction = -1;
+    console.log('💥');
+    return '💥';
+  };
+
+  setInterval(passTime, 1000);
+
+  return { totalPeaceTime, launch };
+};
+
+const ww3 = makeNuclearButton_withLaunchAccess();
+ww3.totalPeaceTime();
+ww3.launch(); // here we can call launch function
+
+// example2
+const makeNuclearButton_withOutLaunchAccess = () => {
+  let timeWithoutDestruction = 0;
+
+  const passTime = () => timeWithoutDestruction++;
+  const totalPeaceTime = () => timeWithoutDestruction;
+
+  const launch = () => {
+    timeWithoutDestruction = -1;
+    console.log('💥');
+    return '💥';
+  };
+
+  setInterval(passTime, 1000);
+
+  return { totalPeaceTime };
+};
+
+const ww3 = makeNuclearButton_withOutLaunchAccess();
+ww3.totalPeaceTime();
+//ww3.launch(); // here we can not call launch function
