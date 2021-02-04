@@ -111,7 +111,7 @@ getHeavyDuty(699);
 // but here just one time big array created
 
 // 2- Encapsulation
-// example1
+// example 1 part 1
 const makeNuclearButton_withLaunchAccess = () => {
   let timeWithoutDestruction = 0;
 
@@ -133,7 +133,7 @@ const ww3 = makeNuclearButton_withLaunchAccess();
 ww3.totalPeaceTime();
 ww3.launch(); // here we can call launch function
 
-// example2
+// example 1 part 2
 const makeNuclearButton_withOutLaunchAccess = () => {
   let timeWithoutDestruction = 0;
 
@@ -154,3 +154,38 @@ const makeNuclearButton_withOutLaunchAccess = () => {
 const ww3 = makeNuclearButton_withOutLaunchAccess();
 ww3.totalPeaceTime();
 //ww3.launch(); // here we can not call launch function
+
+//-------------------------------------------------------------------------
+
+// example 2 part 1
+const userStart = () => {
+  let startVariable = false;
+  const hideInit = () => {
+    if (!startVariable) {
+      console.log('web page started!');
+      startVariable = true;
+    }
+  };
+  const init = () => {
+    console.log('init for user started!');
+    hideInit();
+  };
+  return { init };
+};
+const startWeb = userStart();
+startWeb.init();
+
+// example 2 part 2
+function userStart() {
+  let startVariable = false;
+  return function () {
+    if (!startVariable) {
+      console.log('web page started!');
+      startVariable = true;
+    } else {
+      return;
+    }
+  };
+}
+const startWeb = userStart();
+startWeb();
