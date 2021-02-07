@@ -1,4 +1,4 @@
-//Variable Environement
+//Variable Environment
 function two() {
   var isValid; // 5. isValid is undefined in this execution context.
 }
@@ -9,4 +9,4 @@ function one() {
 }
 
 var isValid = false; // 1. Global variable is created as undefined. Then during execution, it changes in memory to false.
-one() // 2. New execution context is created on top of the stack.
+one(); // 2. New execution context is created on top of the stack.
