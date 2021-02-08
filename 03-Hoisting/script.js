@@ -19,8 +19,8 @@ var favoriteFood = 'grapes';
 
 var foodThoughts = function () {
   console.log('Original favorite food: ' + favoriteFood); // Original favorite food: undefined
-  // in line 20 we declare favoriteFood so hoisting happened.
-  // in this function we have favoriteFood but until line 20 that is undefined
+  // in next code line we declare favoriteFood so hoisting happened.
+  // in this function we have favoriteFood but until next code line that is undefined
 
   var favoriteFood = 'sushi';
 
