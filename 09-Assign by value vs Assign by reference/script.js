@@ -26,14 +26,25 @@ let clone = Object.assign({}, obj);
 let clone2 = { ...obj };
 let superClone = JSON.parse(JSON.stringify(obj));
 
-console.log('original obj:', obj);
+console.log('original obj:', obj); // { a: 'a', b: 'b', c: { deep: 'try and copy me' } }
 obj.c.deep = 'hahaha';
-console.log('obj after change:', obj);
-console.log('clone new obj with assign:', clone);
-console.log('clone new obj with ...:', clone2);
-console.log('clone new obj with json:', superClone);
+console.log('obj after change:', obj); // { a: 'a', b: 'b', c: { deep: 'hahaha' } }
+console.log('clone new obj with assign:', clone); // { a: 'a', b: 'b', c: { deep: 'hahaha' } }
+console.log('clone new obj with ...:', clone2); // { a: 'a', b: 'b', c: { deep: 'hahaha' } }
+console.log('clone new obj with json:', superClone); // { a: 'a', b: 'b', c: { deep: 'try and copy me' } }
 
 //-----------------------------------------------------------
+
+// this part is not correct needs more research
+// this part is not correct needs more research
+// this part is not correct needs more research
+// this part is not correct needs more research
+// this part is not correct needs more research
+// this part is not correct needs more research
+// this part is not correct needs more research
+// this part is not correct needs more research
+// this part is not correct needs more research
+// this part is not correct needs more research
 
 // note: JavaScript passes all arguments to a function by value.
 
@@ -47,18 +58,30 @@ let obj2 = {
 };
 let obj3 = obj2;
 
-function change(number, string, obj1, obj2) {
+let arr = [1, 2, 3, 4, 5];
+
+function change(number, string, _obj1, _obj2, _arr) {
   // the arguments are new copy of original
   // when we change value that is no effect to variable in global
   number = number * 10;
   string = 'Pete';
-  obj1 = obj2;
-  obj2.value = 'c';
+  //_obj1 = _obj2;
+  //_obj1.value = 'd';
+  _obj1 = {
+    value: 'e',
+  };
+  _obj2.value = 'c';
+  console.log('obj1 inside function: ', _obj1); // { value: 'c' }
+  _arr.push(6);
+  console.log(arr); // { value: 'c' }
 }
 
-change(number, string, obj1, obj2);
+change(number, string, obj1, obj2, arr);
 
 //Guess the outputs here before you run the code:
 console.log(number);
 console.log(string);
 console.log(obj1.value);
+console.log(obj2.value); // I can not understand this, that is effect to variable in global
+console.log(obj3.value);
+console.log(arr);

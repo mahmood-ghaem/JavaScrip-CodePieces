@@ -6,7 +6,7 @@
 
 (function () {
   alert('Parentheses around the whole thing');
-})();
+}());
 
 !(function () {
   alert('Bitwise NOT operator starts the expression');

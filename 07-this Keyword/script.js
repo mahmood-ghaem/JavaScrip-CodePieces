@@ -3,6 +3,7 @@
 //benefit
 // 1: gives methods access to their object
 // 2: execute same code for multiple objects
+
 const obj = {
   name: 'Billy',
   sing: function () {
@@ -13,6 +14,15 @@ const obj = {
   },
 };
 
+const objInstance1 = Object.create(obj);
+
+objInstance1.name = 'Mahmood';
+
+console.log(objInstance1.sing());
+console.log(objInstance1.singAgain());
+
+//--------------------------------------------------------------
+
 function importantPerson() {
   console.log(this.name);
 }
@@ -21,10 +31,11 @@ const name = 'Sunny';
 const obj1 = { name: 'Cassy', importantPerson: importantPerson };
 const obj2 = { name: 'Jacob', importantPerson: importantPerson };
 
+obj1.importantPerson();
 obj2.importantPerson();
 
 //----------------------------------------------------------------
-//Exercise:
+
 const a = function () {
   console.log('a', this); //refer to window
   const b = function () {
@@ -40,12 +51,14 @@ const a = function () {
 };
 
 a();
+
 //------------------------------------------------------------------
+
 //JS is weird:
 const obj = {
   name: 'Billy',
   sing: function () {
-    console.log('a', this); // in this case, it's a method on an object.
+    console.log('a', this); // here this refer to obj
     var anotherFunc = function () {
       console.log('b', this); // this points to windows!
     };
@@ -103,7 +116,7 @@ obj.sing()();
 var b = {
   name: 'jay',
   say() {
-    console.log(this);
+    console.log('b', this); // refer to b object
   },
 };
 
@@ -111,7 +124,7 @@ var c = {
   name: 'jay',
   say() {
     return function () {
-      console.log(this);
+      console.log('c', this); // refer to global or window
     };
   },
 };
@@ -119,15 +132,16 @@ var c = {
 var d = {
   name: 'jay',
   say() {
-    return () => console.log(this);
+    return () => console.log('d', this); // refer to d object
   },
 };
 
-console.log(b.say());
-console.log(c.say()());
-console.log(d.say()());
+b.say();
+c.say()();
+d.say()();
 
 //--------------------------------------------------------
+
 //test:
 const character = {
   name: 'Simon',
@@ -140,7 +154,7 @@ const giveMeTheCharacterNOW = character.getCharacter;
 //How Would you fix this?
 console.log('?', giveMeTheCharacterNOW()); //this should return 'Simon' bud doesn't
 
-//solution:
+//solution 1:
 const character = {
   name: 'Simon',
   getCharacter() {
@@ -150,3 +164,15 @@ const character = {
 const giveMeTheCharacterNOW = character.getCharacter.bind(character);
 
 console.log('?', giveMeTheCharacterNOW());
+
+//solution 2:
+const character = {
+  name: 'Simon',
+  getCharacter() {
+    return this.name;
+  },
+};
+const giveMeTheCharacterNOW = character.getCharacter();
+
+console.log('?', giveMeTheCharacterNOW);
+console.log('?', character.getCharacter());
