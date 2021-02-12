@@ -32,3 +32,16 @@ function loop2() {
   console.log(i); // error because can not access to i
 }
 loop2();
+
+//-----------------------------------------
+
+// In JavaScript variable declared with var keyword scoped to nearest function not always to global
+function testFunc() {
+  for (var i = 0; i < 5; i++) {
+    console.log(i);
+  }
+  console.log('inside function', i);
+}
+console.log('outside function', i); // we have error here
+
+testFunc();
