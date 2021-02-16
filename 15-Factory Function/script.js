@@ -1,5 +1,6 @@
 //factory functions
 function createElf(name, weapon) {
+  //we can also have closures here to hide properties from being changed.
   return {
     name,
     weapon,
