@@ -140,6 +140,9 @@ b.say();
 c.say()();
 d.say()();
 
+// arrow functions are lexical scope that means this keyword refers to where the functions written
+// but regular functions are dynamically scope that means this keyword refers to who call the function
+
 //--------------------------------------------------------
 
 //test:
