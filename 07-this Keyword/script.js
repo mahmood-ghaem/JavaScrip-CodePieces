@@ -179,3 +179,58 @@ const giveMeTheCharacterNOW = character.getCharacter();
 
 console.log('?', giveMeTheCharacterNOW);
 console.log('?', character.getCharacter());
+
+//========================================================================================
+
+// new binding
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+  console.log(this);
+}
+
+const person1 = new Person('Xavier', 55);
+
+//--------------------------------------------------------
+
+//implicit binding
+const person = {
+  name: 'Karen',
+  age: 40,
+  hi() {
+    console.log('hi' + this.name);
+  },
+};
+
+person.hi();
+
+//--------------------------------------------------------
+
+//explicit binding
+const person3 = {
+  name: 'Karen',
+  age: 40,
+  hi: function () {
+    console.log('hi' + this.setTimeout); // this refer to global or window and call setTimeout() function in window prototype
+  }.bind(window),
+};
+
+person3.hi();
+
+// run this code inside console of chrome
+
+//--------------------------------------------------------
+
+// arrow functions
+const person4 = {
+  name: 'Karen',
+  age: 40,
+  hi: function () {
+    var inner = () => {
+      console.log('hi ' + this.name);
+    };
+    return inner();
+  },
+};
+
+person4.hi();
