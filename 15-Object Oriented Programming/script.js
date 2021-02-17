@@ -81,3 +81,24 @@ const sam = new Elf('Sam', 'bow');
 const peter = new Elf('Peter', 'fire');
 console.log(sam.attack());
 console.log(peter.attack());
+
+//=============================================================
+
+// class
+// in JavaScript, class keyword is still just prototype and inheritance.
+// some people call this pseudo classical inheritance because it's not real classical inheritance.
+
+class Elf {
+  constructor(name, weapon) {
+    this.name = name;
+    this.weapon = weapon;
+  }
+  attack() {
+    return 'attack with ' + this.weapon;
+  }
+}
+
+const fiona = new Elf('Fiona', 'ninja stars');
+console.log(fiona instanceof Elf); // true
+const ben = new Elf('Ben', 'bow');
+console.log(fiona.attack());
