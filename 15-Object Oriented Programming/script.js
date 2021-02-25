@@ -119,6 +119,7 @@ class Character {
 class Elf extends Character {
   constructor(name, weapon, type) {
     // console.log('what am i?', this); this gives an error
+    // because this keyword means after call super class constructor
     super(name, weapon);
     console.log('what am i?', this);
     this.type = type;
@@ -140,3 +141,6 @@ const houseElf = new Elf('Dolby', 'cloth', 'house');
 //houseElf.makeFort() // error
 const shrek = new Ogre('Shrek', 'club', 'green');
 shrek.makeFort();
+
+console.log(Ogre.isPrototypeOf(shrek)); // false
+console.log(Ogre.prototype.isPrototypeOf(shrek)); //true
