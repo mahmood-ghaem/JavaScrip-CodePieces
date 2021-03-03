@@ -56,25 +56,3 @@ console.log(multipleByTwo(4)); // 8
 
 var multipleByThree = multiply.bind(this, 3);
 console.log(multipleByThree(4)); // 12
-
-//-----------------------------------------------------
-
-// Normal function
-function greet(greeting, name) {
-  return `${greeting} ${name}`;
-}
-
-// Curry function
-function curryGreet(greeting) {
-  return function (name) {
-    return `${greeting} ${name}`;
-  };
-}
-
-const welcomeGreeting = curryGreet('Welcome!');
-
-welcomeGreeting('Mahmood');
-welcomeGreeting('Reza');
-
-greet('Welcome', 'Mahmood');
-greet('Welcome', 'Reza');

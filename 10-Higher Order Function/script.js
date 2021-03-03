@@ -47,16 +47,16 @@ multiplyByFive(3);
 //--------------------------------------------------------------------
 
 const checkThatTwoPlusTwoEqualsFourAMillionTimes = () => {
-  for(let i = 1; i <= 1000000; i++) {
-    if ( (2 + 2) != 4) {
+  for (let i = 1; i <= 1000000; i++) {
+    if (2 + 2 != 4) {
       console.log('Something has gone very wrong :( ');
     }
   }
 };
 
-const addTwo = num => num + 2;
+const addTwo = (num) => num + 2;
 
-const timeFuncRuntime = funcParameter => {
+const timeFuncRuntime = (funcParameter) => {
   let t1 = Date.now();
   funcParameter();
   let t2 = Date.now();
@@ -64,17 +64,23 @@ const timeFuncRuntime = funcParameter => {
 };
 
 // Write your code below
-const time2p2 = 
-timeFuncRuntime(checkThatTwoPlusTwoEqualsFourAMillionTimes);
+const time2p2 = timeFuncRuntime(checkThatTwoPlusTwoEqualsFourAMillionTimes);
 
-const checkConsistentOutput = (func,val)=>{
-let firstTry = func(val);
-    let secondTry = func(val);
-    if (firstTry === secondTry) {
-        return firstTry;
-    } else {
-        return 'This function returned inconsistent results';
-    }
-}
+const checkConsistentOutput = (func, val) => {
+  let firstTry = func(val);
+  let secondTry = func(val);
+  if (firstTry === secondTry) {
+    return firstTry;
+  } else {
+    return 'This function returned inconsistent results';
+  }
+};
 
-checkConsistentOutput(addTwo,5);
+checkConsistentOutput(addTwo, 5);
+
+//--------------------------------------------------------------------
+
+const hof = (fn) => fn(5);
+hof(function a(x) {
+  console.log(x);
+});

@@ -222,3 +222,15 @@ for (var i = 0; i < array.length; i++) {
     }, 3000);
   })(i);
 }
+
+//--------------------------------------------------------------------
+
+const closure = function () {
+  let count = 55;
+  return function getCounter() {
+    return count;
+  };
+};
+
+const getCounter = closure();
+console.log(getCounter());
