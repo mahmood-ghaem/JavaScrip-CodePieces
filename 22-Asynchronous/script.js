@@ -52,3 +52,25 @@ const getData = async () => {
   }
 };
 getData();
+
+//=================================================================
+
+// Callback queue
+setTimeout(() => {
+  console.log('1', 'is the loneliest number');
+}, 0);
+setTimeout(() => {
+  console.log('2', 'can be as bad as one');
+}, 10);
+
+// Job queue has more priority of Callback queue
+Promise.resolve('hi').then((data) => console.log('3', data));
+
+//
+console.log('4', 'is a crowd');
+
+// output:
+// 4 is a crowd
+// 3 hi
+// 1 is the loneliest number
+// 2 can be as bad as one
